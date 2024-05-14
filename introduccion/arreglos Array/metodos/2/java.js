@@ -26,11 +26,28 @@ una funcion de tipo flecha con el parametro de nombre*/
 })
 console.log(Valor);//Luego le decimos que nos muestre el valor,retornado
 
-const nombreMayuscula = Nombres.map((nombre) =>{
+const mayusculas = Nombres.map((nombre) =>{
     return nombre.toUpperCase();
-} )
-console.log(nombreMayuscula);
-
-const valor1 = nombres.map(() =>{
-
 })
+console.log(mayusculas);
+
+const letras = Nombres.filter((nombre) =>{
+    if(nombre.length == 4){
+        return nombre;
+    }
+}) 
+console.log(letras);
+
+/*includes nos devolver afalse o true si encentra el eleento que estamos buscando*/
+console.log(Nombres.includes("jose"));
+
+/*every va a ejecutar alguna condicion por cada uno d elos elementos y si todos los elementos cumplen 
+la condicion nos va a devolver true*/
+const type = Nombres.every((nombre) =>{
+    if(typeof nombre == "string"){
+        return true;
+    }else{
+        return false;
+    }
+});
+console.log(type);
