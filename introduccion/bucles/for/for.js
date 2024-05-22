@@ -12,10 +12,12 @@ console.log(bucle);
 */
 
 
+
 const valor = prompt("desde que numeros queres que inicie la secuencia");
 for(let numero = 0; numero<=valor; numero++){
     console.log(numero);
 }
+
 /*sentencia BREAK*/
 for(let numero = 0; numero<=2; numero++){
     console.log(numero);
