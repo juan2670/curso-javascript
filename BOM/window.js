@@ -67,7 +67,6 @@ const iniciarSesion = () =>{
     document.cookie = `nombre= ${usuario}; expires=1 jan 2025 01:00:00 UTC`;
     alert("sesion iniciada");
 };
-console.log(document.cookie);
 //elimiando las cookies
 const cerrarSesion = () =>{
     document.cookie = `nombre=; expires=1 jan 2020 01:00:00 UTC`
