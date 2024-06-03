@@ -18,36 +18,15 @@ body {
 	justify-content: center;
 }
 
-.contenedor-principal {
-	width: 90%;
-	max-width: 1000px;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 40px;
+h1 {
+	font-size: 80px;
 }
 
-.contenedor {
-	display: grid;
-	gap: 40px;
-	padding: 40px;
-	border: 2px solid #000;
-
-}
-
-.caja {
-	background: #fcfcfc;
-	padding: 40px;
-	font-size: 24px;
-	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-family: sans-serif;
-}
-
-.caja.activa {
-	background: #2553df;
-	color: #fff;
+h2 {
+	font-size: 40px;
+	font-weight: normal;
+	margin-bottom: 40px;
+	color: #848484;
 }
 
 button {

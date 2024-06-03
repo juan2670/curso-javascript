@@ -16,7 +16,7 @@ const eliminar = () =>{
 const agregar = () =>{
 	cajas.forEach((caja) =>{
 		caja.style.fontSize = `${tamaño + 1}px`;
-		tamaño++
+		tamaño++;
 	})
 };
 

@@ -1,6 +1,6 @@
 const contenedor = document.getElementById("contenedor1");
 contenedor.addEventListener("click",(e) =>{
-    console.log("clik contenedor")
+    console.log("clik contenedor");
 });
 const caja = document.querySelector(".caja");
 caja.addEventListener("click", (e) => {

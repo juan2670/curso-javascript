@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="contenedor">
+        <form id="formulario_donacion" action="" method="">
+            <input type="email" id="correo" name="correo" placeholder="correo@gmail.com" >
+            <select name="pais" id="pais">
+                <option selected disabled>selecciona un pais</option>
+                <option value="mexico">Mexico</option>
+                <option value="españa">España</option>
+                <option value="argentina">Argentina</option>
+            </select>
+            <label for="cantidad_5">
+                <input type="radio" name="donacion" id="cantidad_5" value="5">
+                5 USD
+            </label>
+            <label for="cantidad_10">
+                <input type="radio" name="donacion" id="cantidad_10" value="10">
+                10 USD
+            </label>
+            <input type="date" id="fecha" name="fecha">
+            <label for="Terminos">
+                <input type="radio" id="terminos" name="terminos">
+                Acepta los terminos y condiciones
+            </label>
+            <button id="btnsend">Enviar</button>
+        </form>
+    </div>
+
+    <script src="expresionesRegulares.js"></script>
+</body>
+</html>
