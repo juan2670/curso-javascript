@@ -1,19 +1,23 @@
-import dataCategorias from "./datos/categorias"
-const contenedorCetegorias = document.getElementById("categorias");
+import dataCategorias from "./datos/categorias";
 const {categorias} = dataCategorias;
+const contenedorCategorias = document.getElementById("categorias");
+
 categorias.forEach((categoria) =>{
+    //se crea el elemento
     const nuevaCategoria = document.createElement("a");
-    const plantailla = `
-    <img class="categoria__img" src="${categoria.imagenPortada}" alt="" />
+    //se agreaga el contenido
+    const plantilla =`<a href="#" class="categoria" data-categoria="america">
+    <img class="categoria__img" src="${categoria.portadaImg}" alt="" />
     <div class="categoria__datos">
         <p class="categoria__nombre">${categoria.nombre}</p>
-        <p class="categoria__numero-fotos">${categoria.numeroFotos} Fotos</p>
+        <p class="categoria__numero-fotos">${categoria.numeroDeFotos} Fotos</p>
     </div>
-    `;
-    nuevaCategoria.innerHTML = plantailla;
+</a>`
+    // Agregamos la clase, href, dataset y la plantilla a la nueva categoria.
     nuevaCategoria.classList.add("categoria");
     nuevaCategoria.href = "#";
     nuevaCategoria.dataset.categoria = categoria.id;
-
-    contenedorCetegorias.append(nuevaCategoria);
-});
+    nuevaCategoria.innerHTML = plantilla;
+    //se agreaga al DOM
+    contenedorCategorias.append(nuevaCategoria);
+});     

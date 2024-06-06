@@ -1,6 +1,6 @@
 'use strict';
 
-var dataFotos = {
+var data = {
 	fotos: {
 		america: [
 			{
@@ -13,7 +13,8 @@ var dataFotos = {
 			{
 				id: 2,
 				nombre: 'America 2',
-				descripcion:'America 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id enim ac diam consectetur vulputate eget in magna. Sed fermentum, sapien nec vulputate bibendum, urna neque eleifend leo, at porta diam risus non ligula. Nulla ac venenatis augue. Morbi lobortis libero sit amet justo cursus, iaculis ultricies sapien lacinia.',
+				descripcion:
+					'America 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id enim ac diam consectetur vulputate eget in magna. Sed fermentum, sapien nec vulputate bibendum, urna neque eleifend leo, at porta diam risus non ligula. Nulla ac venenatis augue. Morbi lobortis libero sit amet justo cursus, iaculis ultricies sapien lacinia.',
 				ruta: './img/america/2.jpg',
 			},
 			{
@@ -430,85 +431,39 @@ var dataFotos = {
 	},
 };
 
-const {fotos}  = dataFotos;
-
+const {fotos} = data;
 var dataCategorias = {
-	categorias: [
-		{ id: 'america', nombre: 'America', numeroFotos: fotos['america'].length, imagenPortada: './img/america.jpg' },
-		{ id: 'europa', nombre: 'Europa', numeroFotos: fotos['europa'].length, imagenPortada: './img/europa.jpg' },
-		{ id: 'africa', nombre: 'África', numeroFotos: fotos['africa'].length, imagenPortada: './img/africa.jpg' },
-		{ id: 'asia', nombre: 'Asia', numeroFotos: fotos['asia'].length, imagenPortada: './img/asia.jpg' },
-		{ id: 'oceania', nombre: 'Oceania', numeroFotos: fotos['oceania'].length, imagenPortada: './img/oceania.jpg' },
-		{
-			id: 'antartida',
-			nombre: 'Antártida',
-			numeroFotos: fotos['antartida'].length,
-			imagenPortada: './img/antartida.jpg',
-		},
-	],
+    categorias: [
+        {
+            id: "america", nombre: "America", numeroFotos: fotos["america"].length, portadaImg: "./img/america.jpg",
+            id: "europa", nombre: "Europa", numeroDeFotos: fotos["europa"].length, portadaImg: "./img/europa.jpg",
+            id: "africa", nombre: "Africa", numeroDeFotos: fotos["africa"].length, portadaImg: "./img/africa",
+            id: "asia", nombre: "Asia", numeroDeFotos: fotos["fotos"].length, portadaImg: "./img/asia",
+            id: "oceania", nombre: "Oceania", numeroDeFotos: fotos["oceania"].length, portadaImg: "./img/oceania",
+            id: antartida, nombre: "Antartida", numeroDeFotos: fotos["antartida"].length, portadaImg: "./img/antartida",
+        },
+    ],
 };
 
-const contenedorCetegorias = document.getElementById("categorias");
 const {categorias} = dataCategorias;
+const contenedorCategorias = document.getElementById("categorias");
+
 categorias.forEach((categoria) =>{
+    //se crea el elemento
     const nuevaCategoria = document.createElement("a");
-    const plantailla = `
-    <img class="categoria__img" src="${categoria.imagenPortada}" alt="" />
+    //se agreaga el contenido
+    const plantilla =`<a href="#" class="categoria" data-categoria="america">
+    <img class="categoria__img" src="${categoria.portadaImg}" alt="" />
     <div class="categoria__datos">
         <p class="categoria__nombre">${categoria.nombre}</p>
-        <p class="categoria__numero-fotos">${categoria.numeroFotos} Fotos</p>
+        <p class="categoria__numero-fotos">${categoria.numeroDeFotos} Fotos</p>
     </div>
-    `;
-    nuevaCategoria.innerHTML = plantailla;
+</a>`;
+    // Agregamos la clase, href, dataset y la plantilla a la nueva categoria.
     nuevaCategoria.classList.add("categoria");
     nuevaCategoria.href = "#";
     nuevaCategoria.dataset.categoria = categoria.id;
-
-    contenedorCetegorias.append(nuevaCategoria);
+    nuevaCategoria.innerHTML = plantilla;
+    //se agreaga al DOM
+    contenedorCategorias.append(nuevaCategoria);
 });
-
-const galeria$3 = document.getElementById("galeria");
-const cargarImg = (id,nombre,ruta,descripcion) =>{
-    galeria$3.querySelector(".galeria__imagen").src = ruta;
-};
-
-const contenedorCategorias = document.getElementById("categorias");
-const galeria$2 = document.getElementById("galeria");
-contenedorCategorias.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    if (e.target.closest("a")) {
-        galeria$2.classList.add("galeria--active");
-        document.body.style.overflow = "hidden";
-        console.log(dataFotos);
-
-        const categoriaActiva = e.target.closest("a").dataset.categoria;
-        const fotos = dataFotos.fotos[categoriaActiva];
-        const carrusel = galeria$2.querySelector(".galeria__carousel-slides");
-
-        const {id,nombre,ruta,descripcion} = (fotos[0]);
-        cargarImg(id,nombre,ruta);
-
-        carrusel.innerHTML = " ";
-
-        fotos.forEach((foto) => {
-            const slide = `<a href="#" class="galeria__carousel-slide">
-            <img src="${foto.ruta}" alt="" />
-            </a>`;
-            galeria$2.querySelector(".galeria__carousel-slides").innerHTML += slide;
-        });
-        galeria$2.querySelector(".galeria__carousel-slides").classList.add("galeria__carousel-slides--active");
-    }
-});
-
-const galeria$1 = document.getElementById("galeria");
-const cerrarGaleria = () =>{
-    galeria$1.classList.remove("galeria--active");
-};
-
-const galeria = document.getElementById("galeria");
-galeria.addEventListener("click", (e) =>{
-    const boton = e.target.closest("button");
-    if(boton?.dataset.accion === "cerrar-galeria"){
-        cerrarGaleria();
-    }});
